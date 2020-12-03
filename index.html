@@ -7,21 +7,26 @@
     <link rel="stylesheet" href="../css/style.css">
     <script type="text/javascript" src="paper-full.js"></script>
     <script type="text/paperscript" canvas="canvas">
-        var mousePoint = view.center;
+    var mousePoint = view.center;
     var amount = 125;
     var colors = ['red', 'yellow', 'green', 'blue', 'black', 'white'];
+
+    /* Spawns the number of rectangles */
     for (var i = 0; i < amount; i++) {
     var rect = new Rectangle([0, 0], [10, 30]);
     rect.center = mousePoint;
     var path = new Path.Rectangle(rect, 6);
+
     /* Each rectangle represent a color in order and repeat */
     path.fillColor = colors[i % 6]
     var scale = (1 - i / amount) * 30;
     path.scale(scale);
     }
+
     function onMouseMove(event) {
     mousePoint = event.point;
     }
+
     var children = project.activeLayer.children;
     function onFrame(event) {
     for (var i = 0, l = children.length; i < l; i++) {
@@ -44,8 +49,9 @@
     canvas[resize] {
     width: 100%;
     height: 100%;
-  </style>
 }
+  </style>
+
 
 </head>
 <body>
